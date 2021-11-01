@@ -39,7 +39,7 @@ RUN \
 RUN \
   set -ex && \
   cd /app/src && \
-  git clone https://github.com/axelor/abs-webapp.git axelor-erp && \
+  git clone https://github.com/martinzink/open-suite-webapp.git axelor-erp && \
   sed -e 's|git@github.com:|https://github.com/|' -i axelor-erp/.gitmodules && \
   cd axelor-erp && \
   git checkout master && \
