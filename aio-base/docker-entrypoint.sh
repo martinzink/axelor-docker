@@ -91,7 +91,7 @@ prepare_app() {
 		[ ! -e app.properties -a -e application.properties ] \
 			&& cp application.properties app.properties \
 			&& echo >> app.properties \
-			&& echo "application.mode = prod" >> app.properties \
+			&& echo "application.mode = dev" >> app.properties \
 			&& echo "db.default.url = jdbc:postgresql://localhost:5432/$POSTGRES_DB" >> app.properties \
 			&& echo "db.default.user = axelor" >> app.properties \
 			&& echo "db.default.password = axelor" >> app.properties;
@@ -109,8 +109,7 @@ prepare_app() {
 			&& mkdir -p static \
 			&& cd static \
 			&& jar xf ../ROOT.war css js img ico lib dist partials \
-			&& cd .. \
-			&& chown -R tomcat:nginx static;
+			&& cd ..;
 		exit 0;
 	)
 }
@@ -118,7 +117,6 @@ prepare_app() {
 if [ "$1" = "start" ]; then
 	shift
 	prepare_app
-	start_nginx
 	start_postgres
 	start_tomcat
 fi

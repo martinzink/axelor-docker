@@ -3,6 +3,7 @@ certs
 
 *.war
 *.properties
+.idea
 
 # Backup files
 *.sw[nop]

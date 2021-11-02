@@ -76,10 +76,8 @@ RUN set -ex \
 	&& DEBIAN_FRONTEND=noninteractive apt-get update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y gnupg dirmngr apt-transport-https locales \
-	&& apt-key adv --batch --fetch-keys http://nginx.org/keys/nginx_signing.key \
-	&& echo "deb http://nginx.org/packages/mainline/ubuntu/ bionic nginx" >> /etc/apt/sources.list \
 	&& apt-key adv --batch --fetch-keys https://www.postgresql.org/media/keys/ACCC4CF8.asc \
-	&& echo 'deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
+	&& echo 'deb http://apt.postgresql.org/pub/repos/apt/ focal-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
 	&& apt-key adv --batch --fetch-keys https://deb.nodesource.com/gpgkey/nodesource.gpg.key \
 	&& echo 'deb https://deb.nodesource.com/node_8.x bionic main' > /etc/apt/sources.list.d/nodesource.list \
 	&& apt-key adv --batch --fetch-keys https://dl.yarnpkg.com/debian/pubkey.gpg \
@@ -88,7 +86,7 @@ RUN set -ex \
 	&& DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y \
 		supervisor gosu postgresql-9.6 postgresql-contrib-9.6 \
-		libapr1 nginx nginx-module-xslt nginx-module-geoip nginx-module-image-filter nginx-module-njs gettext-base \
+		libapr1 nginx gettext-base \
 		git-core nodejs yarn \
 	&& rm -rf /var/lib/apt/lists/*
 
